@@ -219,9 +219,9 @@ public class WebViewDataTest {
         assertTrue("WebView directory should exist", webViewDirectory.exists());
         assertTrue("WebView directory contains several subdirectories", webViewDirectory.list().length <= 3);
         assertTrue("WebView subdirectories may be one of several",
-                webViewDirectory.list()[0].equals("Service Worker")
-                        || webViewDirectory.list()[0].equals("GPUCache")
-                        || webViewDirectory.list()[0].equals("Local Storage"));
+                "Service Worker".equals(webViewDirectory.list()[0])
+                        || "GPUCache".equals(webViewDirectory.list()[0])
+                        || "Local Storage".equals(webViewDirectory.list()[0]));
 
         assertCacheDirContentsPostErase();
 

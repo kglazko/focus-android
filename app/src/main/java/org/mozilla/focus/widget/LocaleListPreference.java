@@ -293,7 +293,7 @@ public class LocaleListPreference extends ListPreference {
          */
         public boolean isUsable(CharacterValidator validator) {
             // Oh, for Java 7 switch statements.
-            if (this.tag.equals("bn-IN")) {
+            if ("bn-IN".equals(this.tag)) {
                 // Bengali sometimes has an English label if the Bengali script
                 // is missing. This prevents us from simply checking character
                 // rendering for bn-IN; we'll get a false positive for "B", not "ব".
@@ -311,11 +311,11 @@ public class LocaleListPreference extends ListPreference {
             // on common Android devices. Make sure we can show them.
             // See documentation for CharacterValidator.
             // Note that bn-IN is checked here even if it passed above.
-            return !this.tag.equals("or") &&
-                    !this.tag.equals("my") &&
-                    !this.tag.equals("pa-IN") &&
-                    !this.tag.equals("gu-IN") &&
-                    !this.tag.equals("bn-IN") || !validator.characterIsMissingInFont(this.nativeName.substring(0, 1));
+            return !"or".equals(this.tag) &&
+                    !"my".equals(this.tag) &&
+                    !"pa-IN".equals(this.tag) &&
+                    !"gu-IN".equals(this.tag) &&
+                    !"bn-IN".equals(this.tag) || !validator.characterIsMissingInFont(this.nativeName.substring(0, 1));
 
         }
     }
@@ -334,7 +334,7 @@ public class LocaleListPreference extends ListPreference {
 
     private Locale getSelectedLocale() {
         final String tag = getValue();
-        if (tag == null || tag.equals("")) {
+        if (tag == null || "".equals(tag)) {
             return Locale.getDefault();
         }
         return Locales.parseLocaleCode(tag);
