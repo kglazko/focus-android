@@ -83,7 +83,7 @@ public class TrackingProtectionWebViewClient extends WebViewClient {
         final String scheme = resourceUri.getScheme();
 
         if (!request.isForMainFrame() &&
-                !scheme.equals("http") && !scheme.equals("https")) {
+                !"http".equals(scheme) && !"https".equals(scheme)) {
             // Block any malformed non-http(s) URIs. WebView will already ignore things like market: URLs,
             // but not in all cases (malformed market: URIs, such as market:://... will still end up here).
             // (Note: data: URIs are automatically handled by WebView, and won't end up here either.)

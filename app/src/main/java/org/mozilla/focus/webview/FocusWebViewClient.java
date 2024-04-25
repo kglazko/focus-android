@@ -256,7 +256,7 @@ import static android.view.View.IMPORTANT_FOR_ACCESSIBILITY_YES;
         // Allow pages to blank themselves by loading about:blank. While it's a little incorrect to let pages
         // access our internal URLs, Chrome allows loads to about:blank and, to ensure our behavior conforms
         // to the behavior that most of the web is developed against, we do too.
-        if (url.equals("about:blank")) {
+        if ("about:blank".equals(url)) {
             return false;
         }
 
