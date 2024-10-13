@@ -11,6 +11,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -60,7 +62,7 @@ public class HostScreencapScreenshotStrategy implements ScreenshotStrategy {
 
     private void takeScreenshotViaHost(String name) {
         try {
-            final HttpURLConnection connection = (HttpURLConnection) new URL("http://" + HOST_LOOPBACK + ":" + PORT + "/" + name).openConnection();
+            final HttpURLConnection connection = (HttpURLConnection) Urls.create("http://" + HOST_LOOPBACK + ":" + PORT + "/" + name, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openConnection();
             connection.setConnectTimeout(CONNECT_TIMEOUT);
             connection.setReadTimeout(READ_TIMEOUT);
 
