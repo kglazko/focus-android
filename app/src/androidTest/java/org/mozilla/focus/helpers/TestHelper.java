@@ -16,6 +16,7 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
+import io.github.pixee.security.BoundedLineReader;
 
 import org.mozilla.focus.R;
 import org.mozilla.focus.utils.AppConstants;
@@ -330,7 +331,7 @@ public final class TestHelper {
             final StringBuilder builder = new StringBuilder();
             String line;
 
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 builder.append(line);
             }
             reader.close();
